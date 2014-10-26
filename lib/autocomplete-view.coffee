@@ -27,7 +27,7 @@ class AutocompleteView extends SimpleSelectListView
 
     return if @currentFileBlacklisted()
 
-    @registerProvider new FuzzyProvider(@editorView)
+    @registerProvider new FuzzyProvider(@editorView) if @fuzzyProviderEnabled()
 
     @handleEvents()
     @setCurrentBuffer @editor.getBuffer()
@@ -52,6 +52,12 @@ class AutocompleteView extends SimpleSelectListView
         return true
 
     return false
+
+  # Private: Checks whether the built-in Fuzzy provider is enabled
+  #
+  # Returns {Boolean} that defines whether the Fuzzy provider is enabled
+  fuzzyProviderEnabled: ->
+    atom.config.get("autocomplete-plus.enableFuzzyProvider")
 
   # Private: Creates a view for the given item
   #

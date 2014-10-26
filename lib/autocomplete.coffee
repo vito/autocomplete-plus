@@ -17,6 +17,9 @@ module.exports =
     autoActivationDelay:
       type: "integer"
       default: 100
+    enableFuzzyProvider:
+      type: "boolean"
+      default: true
 
   autocompleteViews: []
   editorSubscription: null
